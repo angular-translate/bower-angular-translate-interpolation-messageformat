@@ -2,23 +2,31 @@ angular.module('pascalprecht.translate').constant('TRANSLATE_MF_INTERPOLATION_CA
   '$cacheFactory',
   'TRANSLATE_MF_INTERPOLATION_CACHE',
   function ($cacheFactory, TRANSLATE_MF_INTERPOLATION_CACHE) {
-    var cache = $cacheFactory.get(TRANSLATE_MF_INTERPOLATION_CACHE);
-    if (!cache) {
-      cache = $cacheFactory(TRANSLATE_MF_INTERPOLATION_CACHE);
+    var $translateInterpolator = {};
+    $cache = $cacheFactory.get(TRANSLATE_MF_INTERPOLATION_CACHE), $mf = new MessageFormat(), $identifier = 'messageformat';
+    if (!$cache) {
+      $cache = $cacheFactory(TRANSLATE_MF_INTERPOLATION_CACHE);
     }
-    return function (string, interpolateParams, locale) {
-      var mf = cache.get('MessageFormat-' + locale);
-      if (!mf) {
-        mf = new MessageFormat(locale);
-        cache.put('MessageFormat-' + locale, mf);
+    $cache.put('en', $mf);
+    $translateInterpolator.setLocale = function (locale) {
+      $mf = $cache.get(locale);
+      if (!$mf) {
+        $mf = new MessageFormat(locale);
+        $cache.put(locale, $mf);
       }
+    };
+    $translateInterpolator.getInterpolationIdentifier = function () {
+      return $identifier;
+    };
+    $translateInterpolator.interpolate = function (string, interpolateParams) {
       interpolateParams = interpolateParams || {};
-      var interpolatedText = cache.get(string + angular.toJson(interpolateParams));
+      var interpolatedText = $cache.get(string + angular.toJson(interpolateParams));
       if (!interpolatedText) {
-        interpolatedText = mf.compile(string)(interpolateParams);
-        cache.put(string + angular.toJson(interpolateParams), interpolatedText);
+        interpolatedText = $mf.compile(string)(interpolateParams);
+        $cache.put(string + angular.toJson(interpolateParams), interpolatedText);
       }
       return interpolatedText;
     };
+    return $translateInterpolator;
   }
 ]);
