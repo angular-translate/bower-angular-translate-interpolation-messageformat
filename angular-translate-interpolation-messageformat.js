@@ -3,7 +3,7 @@ angular.module('pascalprecht.translate').constant('TRANSLATE_MF_INTERPOLATION_CA
   'TRANSLATE_MF_INTERPOLATION_CACHE',
   function ($cacheFactory, TRANSLATE_MF_INTERPOLATION_CACHE) {
     var $translateInterpolator = {};
-    $cache = $cacheFactory.get(TRANSLATE_MF_INTERPOLATION_CACHE), $mf = new MessageFormat(), $identifier = 'messageformat';
+    var $cache = $cacheFactory.get(TRANSLATE_MF_INTERPOLATION_CACHE), $mf = new MessageFormat(), $identifier = 'messageformat';
     if (!$cache) {
       $cache = $cacheFactory(TRANSLATE_MF_INTERPOLATION_CACHE);
     }
