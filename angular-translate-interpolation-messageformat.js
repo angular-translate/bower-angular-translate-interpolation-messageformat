@@ -1,5 +1,5 @@
 /*!
- * angular-translate - v2.2.0 - 2014-06-03
+ * angular-translate - v2.3.0 - 2014-09-16
  * http://github.com/PascalPrecht/angular-translate
  * Copyright (c) 2014 ; Licensed MIT
  */
@@ -11,7 +11,7 @@ angular.module('pascalprecht.translate').constant('TRANSLATE_MF_INTERPOLATION_CA
         escaped: function (params) {
           var result = {};
           for (var key in params) {
-            if (params.hasOwnProperty(key)) {
+            if (Object.prototype.hasOwnProperty.call(params, key)) {
               result[key] = angular.element('<div></div>').text(params[key]).html();
             }
           }
