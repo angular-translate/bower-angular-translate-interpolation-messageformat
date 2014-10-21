@@ -1,9 +1,9 @@
 {
   "name": "angular-translate-interpolation-messageformat",
-  "version": "2.4.0",
+  "version": "2.4.2",
   "main": "./angular-translate-interpolation-messageformat.js",
   "dependencies": {
-    "angular-translate": "~2.4.0",
+    "angular-translate": "~2.4.2",
     "messageformat": "~0.1.6"
   },
   "ignore": []
