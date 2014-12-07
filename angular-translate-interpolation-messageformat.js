@@ -1,5 +1,5 @@
 /*!
- * angular-translate - v2.4.2 - 2014-10-21
+ * angular-translate - v2.5.0 - 2014-12-07
  * http://github.com/angular-translate/angular-translate
  * Copyright (c) 2014 ; Licensed MIT
  */
@@ -7,7 +7,7 @@ angular.module('pascalprecht.translate').constant('TRANSLATE_MF_INTERPOLATION_CA
   '$cacheFactory',
   'TRANSLATE_MF_INTERPOLATION_CACHE',
   function ($cacheFactory, TRANSLATE_MF_INTERPOLATION_CACHE) {
-    var $translateInterpolator = {}, $cache = $cacheFactory.get(TRANSLATE_MF_INTERPOLATION_CACHE), $mf = new MessageFormat(), $identifier = 'messageformat', $sanitizeValueStrategy = null, sanitizeValueStrategies = {
+    var $translateInterpolator = {}, $cache = $cacheFactory.get(TRANSLATE_MF_INTERPOLATION_CACHE), $mf = new MessageFormat('en'), $identifier = 'messageformat', $sanitizeValueStrategy = null, sanitizeValueStrategies = {
         escaped: function (params) {
           var result = {};
           for (var key in params) {
