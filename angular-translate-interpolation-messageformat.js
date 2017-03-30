@@ -13,7 +13,7 @@
     // Node. Does not work with strict CommonJS, but
     // only CommonJS-like environments that support module.exports,
     // like Node.
-    module.exports = factory(require("messageformat"));
+    module.exports = factory(MessageFormat || require("messageformat"));
   } else {
     factory(root["MessageFormat"]);
   }
